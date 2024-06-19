@@ -1,0 +1,24 @@
+<div class="flex flex-col w-[30%] h-[550px] mx-[34%] my-[5%] justify-evenly items-center bg-amber-200 rounded-xl shadow-2xl">
+    <p class="text-2xl font-bold font-mono text-blue-700">Verfiy Your Mail id</p>
+
+    <div class="bg-blue-600 h-2 w-[70%]"></div>
+
+    <p class="text-red-600 text-xl">Click this button to get Verfification Email👇</p>
+
+    <button (click)="emailVerify()" class="bg-blue-600 text-white w-40 h-10 rounded-full hover:bg-black py-2 mx-[40%]">Verify Email</button>
+
+    <div *ngIf="emailSent then sent"></div>
+    <ng-template #sent>
+        {{emailSendToast()}}
+    </ng-template>
+
+    <p class="text-red-600 text-xl mx-[10%]">After Received mail,<br>Place the Otp has sent to your mail</p>
+
+    <p class="text-red-600 text-2xl">Note : It is valid for 10 minutes</p>
+
+    <form [formGroup]="otpEmailData" (ngSubmit)="onOtpSubmit()" class="flex flex-col space-y-5">
+        <label class="text-xl font-bold">OTP :</label>
+        <input type="text" formControlName="userotp" class="border-black border-2 rounded-xl w-[400px] h-14 px-3" placeholder="Enter your otp">
+        <button class="bg-blue-600 text-white w-20 h-10 rounded-full hover:bg-black py-2 mx-[40%]">Submit</button>
+    </form>
+</div>
